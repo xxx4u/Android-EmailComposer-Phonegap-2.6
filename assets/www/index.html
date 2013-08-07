@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta id="Viewport" name="viewport" width="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>EmailComposer Example</title>
+
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body id="content" class="content-android">
+
+<button onclick="composeHTML()">Composer HTML Email</button>
+<button onclick="composeText()">Composer Text Email</button>
+
+
+<script src="js/cordova-2.6.0.js"></script>
+<script src="js/emailcomposer.js"></script>
+    <script>
+		function composeHTML(){
+            cordova.require('cordova/plugin/emailcomposer').showEmailComposer(
+                function() { console.log( 'successfully called email composer' ); },
+                function() { console.log( 'failed to call email composer' ); },
+                "Look at this photo",
+                "Take a look at <b>this<b/>:",
+                ["fred@blogs.com", "peter@pan.com"],
+                [],
+                [],
+                true,
+                ["image.jpg", "file.zip"]
+            );
+        }
+
+        function composeText(){
+            cordova.require('cordova/plugin/emailcomposer').showEmailComposer(
+                function() { console.log( 'successfully called email composer' ); },
+                function() { console.log( 'failed to call email composer' ); },
+                "Look at this photo",
+                "Take a look at this:",
+                ["fred@blogs.com", "peter@pan.com"],
+                [],
+                [],
+                false,
+                ["image.jpg", "file.zip"]
+            );
+        }
+        function deviceready() {
+            console.log("Device ready");            
+        }
+        document.addEventListener("deviceready", deviceready, true);
+		</script>
+</body>
+</html>
